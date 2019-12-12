@@ -10,7 +10,7 @@ data_cleaner<- function(input_dat, target_col, col_skip){
       return("All okay: No Missing Value found in the specified column")
     }
   }
-  out_target_clean<-target_clean(input_dat,taret_col)
+  out_target_clean<-target_clean(input_dat,target_col)
   
   #Weber: Give clear warnings for all other variables which contain NA’s.
   other_clean <- function(input_dat, col_skip = 0){
