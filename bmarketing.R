@@ -1,19 +1,21 @@
 library(tidyverse)
 
 source("clean_mater.R")
-data_cleaner()
+#data_cleaner()
 
 #################Loading data into the environment#################
-bmarketing <- read.csv2("bmarketing.csv", dec=".")
+bmarketing2 <- read.csv2("bmarketing.csv", dec=".")
 
 #Lets look at dataset and generate initial understanding about the column types
 str(bmarketing)
 summary(bmarketing)
 
 # CLEAN
-target_clean(bmarketing, "y")
-other_clean(bmarketing,"y")
-bmarketing<-col_del(bmarketing, "y")
+project_outcome<-data_cleaner(bmarketing, "y", "y")
+bmarketing<- project_outcome$x
+#target_clean(bmarketing, "y")
+#other_clean(bmarketing,"y")
+#bmarketing<-col_del(bmarketing, "y")
 
 # A quick check:
 # If newdata has same number of observation that implies no NA value present

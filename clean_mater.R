@@ -1,4 +1,4 @@
-data_cleaner<- function(){
+data_cleaner<- function(input_dat, target_col, col_skip){
   
   
   # Fellner: return an error if the target variable contains any missing values (NA’s).
@@ -10,7 +10,8 @@ data_cleaner<- function(){
       return("All okay: No Missing Value found in the specified column")
     }
   }
-
+  out_target_clean<-target_clean(input_dat,taret_col)
+  
   #Weber: Give clear warnings for all other variables which contain NA’s.
   other_clean <- function(input_dat, col_skip = 0){
     # maybe a for cycle?
@@ -26,7 +27,7 @@ data_cleaner<- function(){
       }
     }
   }
-  
+  other_clean(input_dat, col_skip)
   #test data.frame
   #test <- data.frame(c(NA, "test"), c(NA,1),c(1,2))
   #other_clean(test,3) 
@@ -42,6 +43,10 @@ data_cleaner<- function(){
     input_dat_new <- cbind(input_dat_new, input_dat)
     invisible(input_dat_new)
     
+    
   }
+  bmarketing2<-col_del(input_dat,target_col)
+  
+  return(list(x=bmarketing2, y=out_target_clean))
   
 }
