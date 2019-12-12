@@ -1,17 +1,27 @@
 library(tidyverse)
+source("clean_mater.R")
+data_cleaner()
 
 #################Loading data into the environment#################
-bmarketing <- read.csv2("bmarketing.csv")
+bmarketing <- read.csv2("bmarketing.csv", dec=".")
 
 #Lets look at dataset and generate initial understanding about the column types
 str(bmarketing)
 summary(bmarketing)
+
+# CLEAN
+target_clean(bmarketing, "y")
+other_clean(bmarketing,"y")
+bmarketing<-col_del(bmarketing, "y")
 
 # A quick check:
 # If newdata has same number of observation that implies no NA value present
 # is.na(bmarketing)
 newdata <- na.omit(bmarketing)
 nrow(newdata)==nrow(bmarketing)
+
+
+
 
 #A deep check for a particular column let say age
 if(length(which(is.na(bmarketing$y)==TRUE)>0)){
@@ -34,6 +44,7 @@ bmarketing %>%
 #################Decision Tree#################
 library(rpart)
 library(rpart.plot)
+
 
 dt_model<- rpart(y ~ ., data = bmarketing)
 rpart.plot(dt_model)
