@@ -21,7 +21,7 @@ data_cleaner<- function(input_dat, target_col, col_skip){
           #print(input_dat[i,j])
           if(is.na(input_dat[i,j])==TRUE){
             cat("NA in Column ", j,"\n")
-            i <- nrow(input_dat)+1
+            break
           }
         }
       }
