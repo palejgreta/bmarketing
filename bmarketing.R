@@ -5,7 +5,7 @@ source("clean_mater.R")
 source("log_transform.R")
 source("factors_to_numeric.R")
 #################Loading data into the environment#################
-bmarketing2 <- read.csv2("bmarketing.csv", dec=".")
+bmarketing <- read.csv2("bmarketing.csv", dec=".")
 
 #Lets look at dataset and generate initial understanding about the column types
 str(bmarketing)
@@ -63,3 +63,5 @@ mean(bmarketing$y == predictions)
 
 # Lets look at the confusion matrix
 table(predictions, bmarketing$y)
+
+
