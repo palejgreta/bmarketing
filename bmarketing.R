@@ -2,7 +2,8 @@ library(tidyverse)
 
 source("clean_mater.R")
 #data_cleaner()
-
+source("log_transform.R")
+source("factors_to_numeric.R")
 #################Loading data into the environment#################
 bmarketing2 <- read.csv2("bmarketing.csv", dec=".")
 
@@ -13,9 +14,10 @@ summary(bmarketing)
 # CLEAN
 project_outcome<-data_cleaner(bmarketing, "y", "y")
 bmarketing<- project_outcome$x
-#target_clean(bmarketing, "y")
-#other_clean(bmarketing,"y")
-#bmarketing<-col_del(bmarketing, "y")
+
+bmarketing<-log_fun(bmarketing)
+bmarketing<-factor_to_num(bmarketing)
+
 
 # A quick check:
 # If newdata has same number of observation that implies no NA value present
