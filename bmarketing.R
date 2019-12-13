@@ -13,7 +13,7 @@ summary(bmarketing)
 
 # CLEAN
 project_outcome<-data_cleaner(bmarketing, "y", "y")
-bmarketing<- project_outcome$x
+bmarketing<-project_outcome[[1]]
 
 bmarketing<-log_fun(bmarketing)
 bmarketing<-factor_to_num(bmarketing)

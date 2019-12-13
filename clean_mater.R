@@ -40,13 +40,14 @@ data_cleaner<- function(input_dat, target_col, col_skip){
     ind <- (sum_NA <= 0.5)
     col_names <- names(sum_NA)[ind]
     input_dat_new <- input_dat_new[, col_names]
-    input_dat_new <- cbind(input_dat_new, input_dat)
+    input_dat_new <- cbind(input_dat_new, input_dat[, "y"])
+    colnames(input_dat_new)[ncol(input_dat_new)] <- "y"
     invisible(input_dat_new)
     
     
   }
-  bmarketing2<-col_del(input_dat,target_col)
   
-  return(list(x=bmarketing2, y=out_target_clean))
+  
+  return(list(x=col_del(input_dat,target_col), y=out_target_clean))
   
 }
